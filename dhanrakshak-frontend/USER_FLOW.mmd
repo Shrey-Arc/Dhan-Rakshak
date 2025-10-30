@@ -1,0 +1,65 @@
+flowchart TD
+    Start([User Visits Website])  Landing[Landing Page]
+    Landing  Browse{Browse Features?}
+    Browse |Yes| Features[View Features & Info]
+    Browse |No| Auth[Click Get Started/Sign In]
+    Features  Auth
+    
+    Auth  GoogleAuth[Google OAuth Modal]
+    GoogleAuth  GoogleConsent[Google Consent Screen]
+    GoogleConsent  TokenReceive[Receive ID Token]
+    
+    TokenReceive  BackendVerify[Backend Verifies Token]
+    BackendVerify  CreateSession[Create User Session]
+    CreateSession  ReturnJWT[Return JWT + User Data]
+    
+    ReturnJWT  StoreLocal[Store in localStorage]
+    StoreLocal  Dashboard[Redirect to Dashboard]
+    
+    Dashboard  DashboardView{Choose Action}
+    
+    DashboardView |Ask Question| Copilot[AI Copilot]
+    DashboardView |View Process| MindMap[Mind Map]
+    DashboardView |Upload Files| Upload[Document Upload]
+    DashboardView |Review Tax| Calculate[Tax Calculation]
+    DashboardView |Submit ITR| Submit[Submit to Blockchain]
+    
+    Copilot  CopilotChat[Chat Interface]
+    CopilotChat  QuickActions[Quick Action Buttons]
+    QuickActions  AIResponse[Receive AI Response]
+    AIResponse  CopilotChat
+    
+    MindMap  ViewNodes[View Hierarchical Nodes]
+    ViewNodes  ExpandNode[Click to Expand]
+    ExpandNode  ViewDetails[View Detailed Info]
+    ViewDetails  TrackProgress[Track Status]
+    
+    Upload  SelectFile[Select Document]
+    SelectFile  AIExtract[AI Extracts Data]
+    AIExtract  AutoFill[Auto-fill Forms]
+    AutoFill  ReviewData[Review Extracted Data]
+    
+    Calculate  ViewIncome[View Income Breakdown]
+    ViewIncome  ViewDeductions[Review Deductions]
+    ViewDeductions  CompareRegime[Compare Tax Regimes]
+    CompareRegime  FinalTax[See Tax Liability]
+    FinalTax  RefundAmount[Check Refund]
+    
+    Submit  ReviewAll[Review All Information]
+    ReviewAll  Validate[Validate Data]
+    Validate  Blockchain[Submit to Blockchain]
+    Blockchain  TxHash[Receive Transaction Hash]
+    TxHash  DownloadPDF[Download Certificate]
+    DownloadPDF  EVerify[e-Verify with OTP]
+    EVerify  TrackRefund[Track Refund Status]
+    
+    TrackRefund  End([Process Complete])
+    
+    style Start fill:#e1f5ff
+    style Dashboard fill:#e1f5ff
+    style Copilot fill:#fff4e1
+    style MindMap fill:#fff4e1
+    style Upload fill:#fff4e1
+    style Calculate fill:#fff4e1
+    style Submit fill:#e8f5e9
+    style End fill:#e8f5e9

@@ -1,0 +1,61 @@
+graph LR
+    subgraph "User Actions"
+        A[Upload Form-16]
+        B[Enter Income Details]
+        C[Claim Deductions]
+        D[Review & Submit]
+    end
+    
+    subgraph "Frontend Processing"
+        E[Document Parser]
+        F[Form Validation]
+        G[Tax Calculator]
+        H[API Service]
+    end
+    
+    subgraph "Backend Processing"
+        I[Data Validation]
+        J[Tax Computation]
+        K[Hash Generation]
+        L[Blockchain Writer]
+    end
+    
+    subgraph "Storage"
+        M[(MongoDB)]
+        N[Ethereum Network]
+        O[PDF Generator]
+    end
+    
+    A  E
+    B  F
+    C  F
+    D  H
+    
+    E  F
+    F  G
+    G  H
+    
+    H  I
+    I  J
+    J  K
+    K  L
+    
+    L  M
+    L  N
+    L  O
+    
+    M  P[Record ID]
+    N  Q[Transaction Hash]
+    O  R[Certificate PDF]
+    
+    P  S[User Dashboard]
+    Q  S
+    R  S
+    
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style C fill:#e1f5ff
+    style D fill:#e1f5ff
+    style M fill:#e8f5e9
+    style N fill:#e8f5e9
+    style O fill:#e8f5e9

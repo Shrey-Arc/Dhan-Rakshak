@@ -1,0 +1,32 @@
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant GoogleAuth
+    participant Backend
+    participant Database
+    participant GoogleAPI
+    
+    User->>Frontend: Click "Sign In with Google"
+    Frontend->>GoogleAuth: Open OAuth Modal
+    GoogleAuth->>User: Show Consent Screen
+    User->>GoogleAuth: Grant Permission
+    GoogleAuth->>Frontend: Return ID Token
+    
+    Frontend->>Backend: POST /auth/google {id_token}
+    Backend->>GoogleAPI: Verify ID Token
+    GoogleAPI->>Backend: Token Valid + User Info
+    
+    Backend->>Database: Find/Create User
+    Database->>Backend: User Record
+    
+    Backend->>Backend: Generate JWT Token
+    Backend->>Frontend: Return {token, user}
+    
+    Frontend->>Frontend: Store in localStorage
+    Frontend->>Frontend: Update AuthContext
+    Frontend->>User: Redirect to Dashboard
+    
+    Note over Frontend,Backend: Subsequent API Calls
+    Frontend->>Backend: API Request + Bearer Token
+    Backend->>Backend: Verify JWT
+    Backend->>Frontend: Protected Resource

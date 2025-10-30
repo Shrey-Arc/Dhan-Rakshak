@@ -1,0 +1,73 @@
+graph TB
+    subgraph "User Interface Layer"
+        A[Landing Page]  B[Authentication Modal]
+        B  C[Dashboard]
+        C  D[AI Copilot]
+        C  E[Mind Map]
+        C  F[Document Upload]
+    end
+    
+    subgraph "Frontend Layer - Next.js"
+        G[React Components]
+        H[Custom Hooks]
+        I[API Service Layer]
+        J[State Management]
+    end
+    
+    subgraph "Authentication Layer"
+        K[Google OAuth Provider]
+        L[JWT Token Manager]
+        M[Session Storage]
+    end
+    
+    subgraph "Backend API Layer"
+        N[/health - Health Check]
+        O[/auth/google - Authentication]
+        P[/submit - Submit Data]
+        Q[/verify - Verify Data]
+        R[/records - Get Records]
+        S[/record/:id - Get Record]
+    end
+    
+    subgraph "Data Layer"
+        T[(MongoDB Database)]
+        U[Ethereum Blockchain]
+        V[File Storage - PDF]
+    end
+    
+    A  G
+    D  G
+    E  G
+    F  G
+    
+    G  H
+    G  I
+    H  J
+    
+    B  K
+    K  L
+    L  M
+    
+    I  N
+    I  O
+    I  P
+    I  Q
+    I  R
+    I  S
+    
+    O  T
+    P  T
+    P  U
+    P  V
+    Q  U
+    R  T
+    S  T
+    
+    style A fill:#e1f5ff
+    style C fill:#e1f5ff
+    style D fill:#e1f5ff
+    style E fill:#e1f5ff
+    style K fill:#fff4e1
+    style T fill:#e8f5e9
+    style U fill:#e8f5e9
+    style V fill:#e8f5e9
